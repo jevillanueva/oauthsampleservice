@@ -17,3 +17,9 @@ Configurar las variables de entorno de:
 - [backend.env](./backend.env)
 y configurar el GOOGLE_CLIENT_ID en el docker-compose para el build del frontend:
 - [docker-compose](./docker-compose.yml#L16)
+
+Para compilar y levantar la pila utilizar:
+
+```sh
+$ docker-compose up -d --build
+```
