@@ -13,13 +13,23 @@ Para compilar el API y el Backend se utiliza las URL de los repositorios GIT
 - [Frontend](https://github.com/jevillanueva/oauthsamplefrontend.git)
 
 
-Configurar las variables de entorno de:
+## Configurar una Aplicacion para permitir el acceso Oauth2
+
+- https://support.google.com/cloud/answer/6158849?hl=en
+
+Configurar los end points de redirect y permisos de javascript en la aplicacion.
+
+- Orígenes autorizados de JavaScript: http://localhost
+- URI de redireccionamiento autorizados: http://localhost/api/google/auth
+
+## Configurar las variables de entorno de
+
 - [backend.env](./backend.env)
 y configurar el GOOGLE_CLIENT_ID en el docker-compose para el build del frontend:
 - [docker-compose](./docker-compose.yml#L16)
 
 
-## Implementar el servicio:
+## Implementar el servicio
 
 ```sh
 $ docker-compose up -d --build
