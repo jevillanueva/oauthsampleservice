@@ -1,4 +1,4 @@
-#Implementación del servicio utilizando docker.
+# Implementación del servicio utilizando docker.
 
 La arquitectura utiliza una configuración de 4 contenedores:
 
@@ -9,8 +9,8 @@ La arquitectura utiliza una configuración de 4 contenedores:
 
 Para compilar el API y el Backend se utiliza las URL de los repositorios GIT
 
-- Backend: https://github.com/jevillanueva/oauthsamplebackend.git
-- Frontend: https://github.com/jevillanueva/oauthsamplefrontend.git
+- [Backend](https://github.com/jevillanueva/oauthsamplebackend.git)
+- [Frontend](https://github.com/jevillanueva/oauthsamplefrontend.git)
 
 
 Configurar las variables de entorno de:
@@ -18,7 +18,8 @@ Configurar las variables de entorno de:
 y configurar el GOOGLE_CLIENT_ID en el docker-compose para el build del frontend:
 - [docker-compose](./docker-compose.yml#L16)
 
-Para compilar y levantar la pila utilizar:
+
+## Implementar el servicio:
 
 ```sh
 $ docker-compose up -d --build
