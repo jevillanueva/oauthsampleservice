@@ -1,0 +1,43 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: https://github.com/jevillanueva/oauthsamplebackend.git
+    restart: always 
+    env_file:
+      - backend.env
+    depends_on:
+      - db
+  frontend:
+    build:
+      context: https://github.com/jevillanueva/oauthsamplefrontend.git
+      dockerfile: Dockerfile.prod
+      args:
+        - GOOGLE_CLIENT_ID=APP_ID
+    restart: always 
+    depends_on:
+      - backend
+  db:
+    image: mongo
+    restart: always 
+    env_file:
+      - mongo.env
+    volumes:
+      - mongodata:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  web:
+    image: nginx:alpine
+    tty: true
+    restart: always 
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/ssl/:/etc/nginx/ssl/
+    depends_on:
+      - backend
+      - frontend
+volumes:
+  mongodata:
+    driver: local
